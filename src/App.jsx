@@ -5,8 +5,7 @@ import Home from "./components/Home";
 import Search from "./components/Search";
 import Basket from "./components/Basket";
 import Admin from "./components/Admin";
-import { useContext } from "react";
-import { BookShopContext } from "./context";
+import DetailsPage from "./components/DetailsPage";
 
 function App() {
   let routers = [
@@ -30,6 +29,11 @@ function App() {
       link: `/admin`,
       element: <Admin />,
     },
+    {
+      id: 5,
+      link: `/detailsPage/:id`,
+      element: <DetailsPage/>
+    }
   ];
 
   return (

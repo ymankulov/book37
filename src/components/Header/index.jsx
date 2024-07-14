@@ -7,17 +7,21 @@ import AdminModalWindow from "../AdminModalWindow";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const naviBasket = useNavigate()
   const { adminPassword, setAdminPassword, adminIcon, setAdminIcon } =
     useContext(BookShopContext);
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
-    <div className="bg-blue-900 py-[30px]">
+    <div className="bg-blue-900 py-[30px] sticky top-0 z-50">
       <div className="container ">
         <div className="flex items-center justify-between">
-          <a onClick={() => {
-            setAdminIcon(false)
-            navigate("/")
-          }} className="text-4xl text-white font-black">
+          <a
+            onClick={() => {
+              setAdminIcon(false);
+              navigate("/");
+            }}
+            className="text-4xl text-white font-black"
+          >
             BookShop
           </a>
           <div className="flex items-center justify-center gap-20">
@@ -35,7 +39,9 @@ const Header = () => {
               to={"/basket"}
               className="flex items-center justify-center flex-col text-[25px] text-white font-bold"
             >
-              <a className="">
+              <a className="" onClick={()=> {
+                naviBasket('/basket')
+              }}> 
                 <IoCart />
               </a>
               <h2>Корзина</h2>

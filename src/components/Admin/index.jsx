@@ -8,7 +8,7 @@ const Admin = () => {
   const [productPrice, setProductPrice] = useState("");
   const [productDes, setProductDes] = useState("");
   const [productUrl, setProductUrl] = useState("");
-  
+
   const onChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -18,7 +18,7 @@ const Admin = () => {
 
   function createBook() {
     let newProduct = {
-      id: 1,
+      id: books.length ? books[books.length - 1].id + 1 : 1,
       name: productName,
       price: productPrice,
       category: productCategory,
@@ -28,6 +28,10 @@ const Admin = () => {
     let result = [...books, newProduct];
     setBooks(result);
     localStorage.setItem("books", JSON.stringify(result));
+    setProductCategory("");
+    setProductName("");
+    setProductPrice("");
+    setProductDes("");
   }
 
   return (
